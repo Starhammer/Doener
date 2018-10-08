@@ -12,5 +12,4 @@ error_reporting(E_NOTICE);
 		<title>D&ouml;ner</title>
 		<?php require_once 'config.php';?>
 	</head>
-	
-	
+	<body>	

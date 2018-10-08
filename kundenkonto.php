@@ -2,7 +2,6 @@
 checkSession();
 $role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION['user']."'"))[0];
 ?>
-<body>
 <header>
 	<h1>Kundenkonto</h1>
 </header>
@@ -14,7 +13,6 @@ $role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION
      <li><a href="<?php echo $base."/logout.php";?>">Logout</a></li>
 </ul>
 </nav>
-</body>
 
 
 <?php require_once 'footer.php';?>
