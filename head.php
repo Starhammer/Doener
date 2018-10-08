@@ -11,5 +11,11 @@ error_reporting(E_NOTICE);
 	    <link  href="css/main.css" rel="stylesheet">
 		<title>D&ouml;ner</title>
 		<?php require_once 'config.php';?>
+
+		<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
 	</head>
-	<body>	
+	<body>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap/bootstrap.min.js"></script>
