@@ -1,0 +1,20 @@
+header {
+	text-align: center;
+}
+
+#main {
+	width:60%;
+	margin:auto;
+}
+
+th{
+	min-width:100px;
+}
+td {
+	  text-align: center; 
+	  vertical-align: middl
+}
+
+table, th, td {
+   border: 1px solid black;
+}
