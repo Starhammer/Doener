@@ -53,13 +53,13 @@ if($notValid == 0){
 	<link href="css/signin.css" rel="stylesheet">
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="Post" class="form-signin">
 		<h1 class="h1 mb-3 font-weight-normal">Login</h1>
-		<?php if($notValid == 1 && !empty($username)): echo "$username";?>
+		<?php if($notValid == 1 && !empty($username)): ?>
 			<p>Passwort oder Benutzer falsch</p>
 		<?php endif; ?>
 		<label class="sr-only" for="username">Benutzername:</label>
-		<input class="form-control" id="username" name="username" type="text" placeholder="Benutzername">
+		<input class="form-control" id="username" name="username" type="text" placeholder="Benutzername" required>
 		<label class="sr-only" for="passwort">Passwort:</label>
-		<input class="form-control" id="passwort" name="passwort" type="password" placeholder="Passwort">
+		<input class="form-control" id="passwort" name="passwort" type="password" placeholder="Passwort" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
 	</form>
 
