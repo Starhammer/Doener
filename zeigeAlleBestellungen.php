@@ -15,7 +15,6 @@ AND aufdat > ".date('Y-m-d',time()-60*60*24*2)."
 ORDER BY  a.aufdat DESC
 LIMIT 30
 ");//TODO DATE 
-echo "<br>bestellungen: ".$bestellungen;
 
 while($bestellung = mysqli_fetch_array($bestellungen)){
     $kundennr ="";
