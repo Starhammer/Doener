@@ -1,10 +1,6 @@
 <?php 
 //import std Header
 require_once 'head.php';
-//import SQL Conection Handler
-require_once 'connector.php';
-
-session_start();
 
 //abfangen von Benutzer eingaben und validierung
 //Bitte keine direkt abfrage nur vergleichen(also kein Where) sonst sql injection und wenn es den nutzer mit pass gibt dann set validate true
@@ -45,7 +41,9 @@ if($notValid == 0){
 	else query("UPDATE sessions SET Sessionnr = '".$token."' WHERE name='".$kdnr."'");
 
 	//redirect
-    header('Location: '.$base."/kundenkonto.php");
+	?>
+	<meta http-equiv="refresh" content="0; URL=./kundenkonto.php">
+	<?php
 }
 ?>
 

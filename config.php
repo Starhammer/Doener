@@ -12,11 +12,18 @@ function checkSession(){
          while($session = mysqli_fetch_array($sessions)){
              if($_SESSION['token']==$session['Sessionnr']&&$_SESSION['user']==$session['name'])$valid= true;
          }
-        if(!$valid)header('Location: '.$base);
-        
-        
-    }else{
-        header('Location: '.$base."\index.php");
+        if(!$valid)
+		{
+			?>
+			<meta http-equiv="refresh" content="0; URL=./index.php">
+			<?php		
+		}       
+    }
+	else
+	{
+		?>
+		<meta http-equiv="refresh" content="0; URL=./index.php">
+		<?php
     }
     
 }
