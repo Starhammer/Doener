@@ -40,7 +40,7 @@ if(isset($auftrag_produkt)){
 ?>
 <body>
 <header>
-	<h1>Auftrag</h1>
+	<h1>auftrag</h1>
 </header>
 <?php if($orderPlaced):?>
 
@@ -64,7 +64,7 @@ $jsingredients = array();
         </select>
         <?php echo "mit";?>
         <select id="ingredients" multiple name="ingredients[]" style="width:150px">
-        	 <?php // Select all from Zutaten
+        	 <?php // Select all from zutaten
             $ingredients = query("Select * FROM zutaten");
             while($ingredient = mysqli_fetch_array($ingredients)):?>
             <?php $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
