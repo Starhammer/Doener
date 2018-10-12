@@ -8,3 +8,4 @@ echo "Logout erfolgreich, Sie werden in 5 Sekunden zum Login umgeleitet";
 
 header( "refresh:5;url=".$base."\index.php" );
 ?>
+<?php require_once 'footer.php';?>

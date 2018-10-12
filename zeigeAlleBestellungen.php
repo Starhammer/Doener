@@ -83,14 +83,31 @@ while($aufpreis = mysqli_fetch_array($aufpreise)){
     	<h1>Bestellungen anzeigen</h1>
     </header>
     <div id="main">
-    	<table>
-    	<tr><th>Nr</th><th>Name</th><th>Produkt</th><th>Zutaten</th><th>Preis</th><th>Datum</th><tr>
-    	<?php $i = 1;
-    	foreach($tblBestellung as $bestellung):?>
-    		<tr><td><?php echo $i++?></td><td><?php echo $bestellung['kundenNr']?></td><td><?php echo $bestellung['produkt']?></td>
-    		<td><?php echo $bestellung['zutaten']?></td><td><?php echo number_format ($bestellung['preis'],2)?></td><td><?php echo date("d.m.Y",strtotime($bestellung['datum']))?></td><tr>
-    	<?php endforeach;?>
+    	<table class="table table-striped table-condensed">
+			<thead>
+    			<tr>
+					<th>Nr</th>
+					<th>Name</th>
+					<th>Produkt</th>
+					<th>Zutaten</th>
+					<th>Preis</th>
+					<th>Datum</th>
+				</tr>
+			</thead>
+    		<?php $i = 1;
+    		foreach($tblBestellung as $bestellung):?>
+    			<tr>
+					<td><?php echo $i++?></td>
+					<td><?php echo $bestellung['kundenNr']?></td>
+					<td><?php echo $bestellung['produkt']?></td>
+    				<td><?php echo $bestellung['zutaten']?></td>
+					<td><?php echo number_format ($bestellung['preis'],2)?></td>
+					<td><?php echo date("d.m.Y",strtotime($bestellung['datum']))?></td>
+				<tr>
+    		<?php endforeach;?>
     	</table>
-    	<a href="<?php echo $base."/kundenkonto.php";?>">Zur&uuml;ck</a>
+    	<a class="btn btn-primary" role="button" href="<?php echo $base."/kundenkonto.php";?>">Zur&uuml;ck</a>
     </div>
 </body>
+
+<?php require_once 'footer.php';?>
