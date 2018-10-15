@@ -1,5 +1,4 @@
 <?php require_once 'head.php';
-checkSession();
 $role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION['user']."'"))[0];
 ?>
 <header>

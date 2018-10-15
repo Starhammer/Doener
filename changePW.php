@@ -1,5 +1,4 @@
 <?php require_once 'head.php';
-checkSession();
 
 $old_pw = hash("sha1",$_POST['old_pw']);
 $new_pw = $_POST['new_pw'];

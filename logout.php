@@ -1,6 +1,5 @@
 <?php
 include_once 'head.php';
-include_once 'config.php';
 //session_start();
 session_destroy();
 //$_SESSION = array();

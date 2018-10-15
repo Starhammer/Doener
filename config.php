@@ -1,6 +1,16 @@
-<?php 
+<?php
+
+if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false) {
+	checkSession();
+}
+
+
 include_once 'connector.php';
+
+ini_set('display_errors',0);
+error_reporting(E_NOTICE);
 $base = dirname($_SERVER['PHP_SELF']);
+
 session_start();
 
 function checkSession(){
