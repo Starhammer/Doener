@@ -6,6 +6,7 @@ debug_to_console("Session destroyed: ".var_export(session_destroy(),true));
  
 echo "Logout erfolgreich, Sie werden in 5 Sekunden zum Login umgeleitet";
 
-header( "refresh:5;url=".$base."\index.php" );
+
 ?>
+<meta http-equiv="refresh" content="5; URL=index.php">
 <?php require_once 'footer.php';?>

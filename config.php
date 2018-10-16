@@ -30,7 +30,7 @@ function checkSession(){
 		{
 			debug_to_console("Session invalid");
 			?>
-			<meta http-equiv="refresh" content="0; URL=./index.php">
+			<meta http-equiv="refresh" content="0; URL=index.php">
 			<?php		
 		}       
     }
@@ -38,7 +38,7 @@ function checkSession(){
 	{
 		debug_to_console("Session not found");
 		?>
-		<meta http-equiv="refresh" content="0; URL=./index.php">
+		<meta http-equiv="refresh" content="0; URL=index.php">
 		<?php
     }
     
