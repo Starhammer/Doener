@@ -1,3 +1,4 @@
+<!--START footer.php-->
 	<footer class="footer">
 		<link href="css/sticky-footer.css" rel="stylesheet">
 		<div class="container">
@@ -12,3 +13,4 @@
 <?php
 ob_end_flush();
 ?>
+<!--END footer.php-->

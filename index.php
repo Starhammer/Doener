@@ -1,3 +1,4 @@
+<!--START index.php-->
 <?php 
 //import std Header
 require_once 'head.php';
@@ -13,6 +14,7 @@ $passwort = hash("sha1",$_POST['passwort']);
 
 //Check PW and User combination
 if(isset($username)){
+	debug_to_console("Checking Logindata");
     $notValid = 1;
 	//Get ALL user and pw
     $users = query("SELECT * FROM kunden");
@@ -21,7 +23,12 @@ if(isset($username)){
         if($user['nick']==$username&$user['pw']==$passwort&$user['val']=="J"){
             $kdnr = $user['kdnr'];
             $notValid = 0;
+			debug_to_console("Logindata valid");
         }
+		else
+		{
+			debug_to_console("Logindata invalid");
+		}
     }
 	//???
     mysqli_free_result($users);
@@ -31,14 +38,23 @@ if(isset($username)){
 //Setting Session Parameters. Redirct to kundenkonto
 if($notValid == 0){
 	//Create Session ID, save (+additional params) into Session-Variable
+	debug_to_console("Creating Token");
     $token = hash('sha256',bin2hex(openssl_random_pseudo_bytes (64)));
     $_SESSION['token'] = $token;
     $_SESSION['user'] = $kdnr;
     
 	//If Session does not exist, create one
     $result = query("SELECT * FROM sessions WHERE name='".$kdnr."'");
-    if(mysqli_num_rows($result)==0)query("INSERT INTO sessions (Sessionnr, name) Values ('".$token."', '".$kdnr."')");
-	else query("UPDATE sessions SET Sessionnr = '".$token."' WHERE name='".$kdnr."'");
+    if(mysqli_num_rows($result)==0)
+	{
+		debug_to_console("Create Session");
+		query("INSERT INTO sessions (Sessionnr, name) Values ('".$token."', '".$kdnr."')");
+	}
+	else 
+	{
+		debug_to_console("Update Session");
+		query("UPDATE sessions SET Sessionnr = '".$token."' WHERE name='".$kdnr."'");
+	}
 
 	//redirect
 	?>
@@ -65,3 +81,4 @@ if($notValid == 0){
 //import std Footer
 require_once 'footer.php';
 ?>
+<!--END index.php-->

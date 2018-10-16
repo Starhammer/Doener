@@ -1,3 +1,4 @@
+<!--START kundenkonto.php-->
 <?php require_once 'head.php';
 $role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION['user']."'"))[0];
 ?>
@@ -18,3 +19,4 @@ $role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION
 
 
 <?php require_once 'footer.php';?>
+<!--END kundenkonto.php-->
