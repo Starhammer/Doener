@@ -1,6 +1,7 @@
 <?php
 
 include_once 'connector.php';
+
 session_start();
 
 if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false) {

@@ -39,7 +39,7 @@ if(isset($auftrag_produkt)){
 ?>
 <body>
 <header>
-	<h1>auftrag</h1>
+	<h1>Bestellung aufgeben</h1>
 </header>
 <?php if($orderPlaced):?>
 
@@ -62,11 +62,11 @@ $jsingredients = array();
             <?php endwhile;?>
         </select>
         <?php echo "mit";?>
-        <select id="ingredients" multiple name="ingredients[]" style="width:150px">
+        <select id="ingredients" multiple name="ingredients[]" style="width:150px" class="col-md4">
         	 <?php // Select all from zutaten
             $ingredients = query("Select * FROM zutaten");
-            while($ingredient = mysqli_fetch_array($ingredients)):?>
-            <?php $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
+            while($ingredient = mysqli_fetch_array($ingredients)):
+				  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
             	<option value="<?php echo $ingredient['zunr'];?>"><?php echo $ingredient['bez'];?></option>
             <?php endwhile;?>
         </select>

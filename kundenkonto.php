@@ -3,7 +3,7 @@
 $role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION['user']."'"))[0];
 ?>
 <header>
-	<h1>Kundenkonto</h1>
+	<h1 class="h1 mb-3 font-weight-normal">Kundenkonto</h1>
 </header>
 <div class="container p-4">
 	<div class="row">
