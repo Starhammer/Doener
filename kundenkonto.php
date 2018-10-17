@@ -1,5 +1,7 @@
 <!--START kundenkonto.php-->
-<?php require_once 'head.php';
+<?php 
+session_start();
+require_once 'head.php';
 $role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION['user']."'"))[0];
 ?>
 <header>

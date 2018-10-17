@@ -1,5 +1,6 @@
 <!--START index.php-->
 <?php 
+session_start();
 //import std Header
 require_once 'head.php';
 

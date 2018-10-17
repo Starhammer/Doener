@@ -1,4 +1,6 @@
-<?php require_once 'head.php'; 
+<?php
+session_start();
+require_once 'head.php'; 
 
 $auftrag_produkt = $_POST['product'];
 $auftrag_ingredients = $_POST['ingredients'];
