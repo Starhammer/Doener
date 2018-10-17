@@ -2,6 +2,9 @@
 include_once 'connector.php';
 ini_set('display_errors',0);
 
+$role = mysqli_fetch_row(query("SELECT Rolle FROM kunden WHERE kdnr='".$_SESSION['user']."'"))[0];
+if($role != 'admin') header('Location: '.$base."\index.php");
+
 $tblBestellung =array();
 
 $bestellungen = query("

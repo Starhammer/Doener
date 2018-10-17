@@ -1,8 +1,7 @@
 <?php
+session_start();
 
 include_once 'connector.php';
-
-session_start();
 
 if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false) {
 	checkSession();
