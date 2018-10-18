@@ -16,14 +16,7 @@ AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."'
 ORDER BY  a.aufdat DESC
 LIMIT 30
 ");
-echo "
-Select  a.kdnr, a.aufnr, a.aufdat, b.posnr, b.prnr
-from auftrag a, aufpos b
-WHERE a.aufnr = b.aufnr
-AND aufdat > ".date('Y-m-d',time()-60*60*24*2)."
-ORDER BY  a.aufdat DESC
-LIMIT 30
-";
+
 while($bestellung = mysqli_fetch_array($bestellungen)){
     $kundennr ="";
     for($i=0;$i<5-strlen($bestellung['kdnr']);$i++){
@@ -45,7 +38,7 @@ Select c.kdnr Kunde, c.aufnr auftragsnummer, d.zunr zutatennummer,c.posnr
 from (	Select  a.kdnr, a.aufnr, a.aufdat, b.posnr, b.prnr
 		from auftrag a, aufpos b
 		WHERE a.aufnr = b.aufnr
-       AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."' c,
+        AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."') c,
 		zutbest d
 Where c.posnr = d.posnr
 "); //TODO DATE
@@ -59,7 +52,7 @@ Select c.kdnr, c.aufnr, d.prnr, d.vk,c.posnr
 from (	Select  a.kdnr, a.aufnr, a.aufdat, b.posnr, b.prnr
 		from auftrag a, aufpos b
 		WHERE a.aufnr = b.aufnr
-       AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."' c,
+        AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."') c,
 		produkt d
 Where c.prnr = d.prnr
 Order by c.aufnr
@@ -75,7 +68,7 @@ from ( Select e.kdnr, e.aufnr, e.posnr, f.aup
 	        	from (	Select  a.kdnr, a.aufnr, a.aufdat, b.posnr, b.prnr
 		        		from auftrag a, aufpos b
 		       			WHERE a.aufnr = b.aufnr
-                        AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."' c,
+                        AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."') c,
 	        	zutbest d
 	        	Where c.posnr = d.posnr ) e,
     			zutaten f
