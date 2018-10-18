@@ -24,7 +24,7 @@ $users = query("SELECT * FROM kunden ORDER BY `kunden`.`kdnr` DESC");
 <td><a href="editUser.php?kdnr=<?php echo $row['kdnr'];?>">edit</a> <a href="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$row['kdnr']; ?>">best&auml;tigen</a></td></tr>
 <?php endwhile;?>
 </table>
-
+ <a class="btn btn-lg btn-primary btn-block" href="kundenkonto.php">Zurück</a>
 <?php
 include_once "footer.php";
 ?>
