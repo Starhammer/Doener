@@ -8,9 +8,11 @@ if($role != 'admin') header('Location: '.$base."\index.php");
 $kdnr = $_GET['kdnr'];
 if(isset($kdnr)&&!empty($kdnr)){
 	$kdnr = mysqli_real_escape_string($link,$kdnr);
-	query("UPDATE kunden SET val = 'J' WHERE kdnr='".$kdnr."'");
 	$user= mysqli_fetch_array("SELECT * From kunden WHERE kdnr='".$kdnr."'");
-	mail($user['email'], "Validierung des Doener Portals", "Dein Account beim Döner Portal wurde validiert, fallst du dieses Portal nicht kennst ignoriere die Mail", "From: Doener Portal <doener@protal.de>");
+	if($user['val']!='J'){
+		query("UPDATE kunden SET val = 'J' WHERE kdnr='".$kdnr."'");
+		mail($user['email'], "Validierung des Doener Portals", "Dein Account beim Döner Portal wurde validiert, fallst du dieses Portal nicht kennst ignoriere die Mail", "From: Doener Portal <doener@protal.de>");
+	}
 }
 
 $users = query("SELECT * FROM kunden ORDER BY `kunden`.`kdnr` DESC");
