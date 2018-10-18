@@ -1,7 +1,7 @@
 <?php
 include_once 'connector.php';
 
-if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false) {
+if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false&&strpos($_SERVER['SCRIPT_NAME'], 'register') == false) {
 	checkSession();
 }
 
