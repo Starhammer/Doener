@@ -1,6 +1,9 @@
 <!--START index.php-->
 <?php 
 session_start();
+if(!isset($_SESSION['token'])){
+?><meta http-equiv="refresh" content="0; URL=test.php"><?php
+}
 //import std Header
 require_once 'head.php';
 
