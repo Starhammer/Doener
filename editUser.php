@@ -31,26 +31,60 @@ if(isset($kdnr)&&!empty($kdnr)){
 ?><meta http-equiv="refresh" content="0; URL=editUsers.php"><?php
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$kdnr; ?>" method="Post" class="form-signin">
-		<h1 class="h1 mb-3 font-weight-normal">Login</h1>
-		Benutzername:
-		<input class="form-control" id="username" name="username" type="text" placeholder="Benutzername" value="<?php echo $user['nick']?>" required>
-		EMail(nur DHBW mails):
-		<input class="form-control" id="email" name="email" type="text" placeholder="EMail" value="<?php echo $user['email']?>" required>
-		Vorname:
-		<input class="form-control" id="vorname" name="vorname" type="text" placeholder="Vorname" value="<?php echo $user['vorname']?>" required>
-		Nachname:
-		<input class="form-control" id="nachname" name="nachname" type="text" placeholder="Nachname" value="<?php echo $user['name']?>" required>
-		Kurs:
-		<input class="form-control" id="kurs" name="kurs" type="text" placeholder="Kurs" value="<?php echo $user['kurs']?>" required>
-		Rolle:
-		<input class="form-control" id="rolle" name="rolle" type="text" placeholder="Rolle" value="<?php echo $user['Rolle']?>" required>
-		Valid:
-		<input class="form-control" id="val" name="val" type="text" placeholder="Valid?" value="<?php echo $user['val']?>" required>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">speichern</button>
-		 <a class="btn btn-lg btn-primary btn-block" href="editUsers.php">&Uuml;bersicht</a>
-</form>
-
+<header>
+	<h1 class="h1 mb-3 font-weight-normal">Login</h1>
+</header>
+<div class="container">
+	<form action="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$kdnr; ?>" method="Post" class="form-signin">
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="username">Benutzername</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="username" name="username" type="text" placeholder="Benutzername" value="<?php echo $user['nick']?>" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="email">EMail (nur DHBW mails):</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="email" name="email" type="email" placeholder="EMail" value="<?php echo $user['email']?>" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="vorname">Vorname</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="vorname" name="vorname" type="text" placeholder="Vorname" value="<?php echo $user['vorname']?>" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="nachname">Nachname</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="nachname" name="nachname" type="text" placeholder="Nachname" value="<?php echo $user['name']?>" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="kurs">Kurs</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="kurs" name="kurs" type="text" placeholder="Kurs" value="<?php echo $user['kurs']?>" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="rolle">Rolle</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="rolle" name="rolle" type="text" placeholder="Rolle" value="<?php echo $user['Rolle']?>" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="val">Validiert</label>
+			<div class="col-sm-8">
+				<select class="form-control" id="val" name="val" value="<?php echo $user['val']?>" required>
+					<option <?php if($user['val'] == 'J') echo selected;?> value="J">Ja</option>
+					<option <?php if($user['val'] == 'N') echo selected;?> value="N">Nein</option>
+				</select>
+			</div>
+		</div>		
+		<button class="btn btn-primary btn-flex" type="submit">speichern</button>
+		<a class="btn btn-primary btn-flex" href="editUsers.php">&Uuml;bersicht</a>
+	</form>
+</div>
 
 <?php
 include_once "footer.php";

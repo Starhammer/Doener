@@ -17,16 +17,48 @@ if(isset($kdnr)&&!empty($kdnr)){
 
 $users = query("SELECT * FROM kunden ORDER BY `kunden`.`kdnr` DESC");
 ?>
+<header>
+    <h1 class="h1 mb-3 font-weight-normal">Benutzer bearbeiten</h1>
+</header>
+<div id="main">
+	<table class="table table-striped table-condensed">
+		<thead>
+			<tr>
+				<th>Kd-Nr.</th>
+				<th>Name</th>
+				<th>Vorname</th>
+				<th>vald.</th>
+				<th>Kurs</th>
+				<th>Nick</th>
+				<th>Email</th>
+				<th>Rolle</th>
+				<th>Aktionen</th>
+			</tr>
+		</thead>		
+		<?php while($row = mysqli_fetch_array($users)):?>
+		<tr>
+			<td><?php echo ltrim($row['kdnr'],'0')?></td>
+			<td><?php echo $row['name']?></td>
+			<td><?php echo $row['vorname']?></td>
+			<td><?php echo $row['val']?></td>
+			<td><?php echo $row['kurs']?></td>
+			<td><?php echo $row['nick']?></td>
+			<td><?php echo $row['email']?></td>
+			<td><?php echo $row['Rolle']?></td>
+			<td>
+				<a class="btn btn-sm btn-outline-danger btn-felx" href="editUser.php?kdnr=<?php echo $row['kdnr'];?>">edit</a> 
+				<?php if($row['val'] != "J"): ?>
+					<a class="btn btn-sm btn-success btn-felx" href="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$row['kdnr']; ?>">best&auml;tigen</a>
+				<?php endif; ?>				
+			</td>
+		</tr>
+		<?php endwhile;?>
+	</table>
+	<div class="container">
+		<a class="btn btn-primary btn-flex" href="kundenkonto.php">Zurück</a>
+	</div>
+ </div>
 
-<table class="table table-striped table-condensed">
-<tr><th>kdnr</th><th>name</th><th>vorname</th><th>val</th><th>kurs</th><th>nick</th><th>email</th><th>Rolle</th><th>Aktionen</th></tr>
-<?php while($row = mysqli_fetch_array($users)):?>
-<tr><td><?php echo ltrim($row['kdnr'],'0')?></td><td><?php echo $row['name']?></td><td><?php echo $row['vorname']?></td><td><?php echo $row['val']?></td>
-<td><?php echo $row['kurs']?></td><td><?php echo $row['nick']?></td><td><?php echo $row['email']?></td><td><?php echo $row['Rolle']?></td>
-<td><a href="editUser.php?kdnr=<?php echo $row['kdnr'];?>">edit</a> <a href="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$row['kdnr']; ?>">best&auml;tigen</a></td></tr>
-<?php endwhile;?>
-</table>
- <a class="btn btn-lg btn-primary btn-block" href="kundenkonto.php">Zurück</a>
 <?php
 include_once "footer.php";
 ?>
