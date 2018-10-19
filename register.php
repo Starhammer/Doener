@@ -44,22 +44,27 @@ if(	isset($username)&&!empty($username)&&
 }
 
 ?>
+<link href="css/signin.css" rel="stylesheet">
+<header>
+	<h1 class="h1 mb-3 font-weight-normal">Registrieren</h1>
+</header>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="Post" class="form-signin">
-		<h1 class="h1 mb-3 font-weight-normal">Login</h1>
+		
 		<label class="sr-only" for="username">Benutzername:</label>
 		<input class="form-control" id="username" name="username" type="text" placeholder="Benutzername" required>
-		<label class="sr-only" for="passwort">Passwort:</label>
-		<input class="form-control" id="passwort" name="passwort" type="password" placeholder="Passwort" required>
-		<label class="sr-only" for="passwortBe">Passwort best&auml;tigen:</label>
-		<input class="form-control" id="passwort" name="passwortBe" type="password" placeholder="Passwort bestätigen" required>
+		
 		<label class="sr-only" for="email">EMail(nur DHBW mails):</label>
-		<input class="form-control" id="email" name="email" type="text" placeholder="EMail" required>
+		<input class="form-control" id="email" name="email" type="email" placeholder="Email" required>
 		<label class="sr-only" for="vorname">Vorname:</label>
 		<input class="form-control" id="vorname" name="vorname" type="text" placeholder="Vorname" required>
 		<label class="sr-only" for="nachname">Nachname:</label>
 		<input class="form-control" id="nachname" name="nachname" type="text" placeholder="Nachname" required>
 		<label class="sr-only" for="kurs">Kurs:</label>
 		<input class="form-control" id="kurs" name="kurs" type="text" placeholder="Kurs" required>
+		<label class="sr-only" for="passwort">Passwort:</label>
+		<input class="form-control" id="passwort" name="passwort" type="password" placeholder="Passwort" required>
+		<label class="sr-only" for="passwortBe">Passwort best&auml;tigen:</label>
+		<input class="form-control" id="passwort" name="passwortBe" type="password" placeholder="Passwort bestätigen" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button>
 </form>
 

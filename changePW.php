@@ -21,8 +21,11 @@ if(strlen($new_pw)<4){
 }
 ?>
 <link href="css/signin.css" rel="stylesheet">
-<form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" class="form-signin">
+<header>
 	<h1 class="h1 mb-3 font-weight-normal">Passwort &auml;ndern</h1>
+</header>
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" class="form-signin">
+
 
 	<p><?php echo  $msg;?></p>
 

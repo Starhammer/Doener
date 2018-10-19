@@ -19,6 +19,9 @@ body {
   padding: 15px;
   margin: auto;
 }
+.form-signin input{
+    margin-bottom:5px;
+}
 .form-signin .checkbox {
   font-weight: 400;
 }
@@ -33,12 +36,12 @@ body {
   z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
+  /*margin-bottom: -1px;*/
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }

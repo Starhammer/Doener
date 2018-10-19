@@ -41,7 +41,7 @@ if(isset($auftrag_produkt)){
 ?>
 <body>
 <header>
-	<h1>Bestellung aufgeben</h1>
+	<h1 class="h1 mb-3 font-weight-normal">Bestellung aufgeben</h1>
 </header>
 <?php if($orderPlaced):?>
 
@@ -72,14 +72,14 @@ $jsingredients = array();
             	<option value="<?php echo $ingredient['zunr'];?>"><?php echo $ingredient['bez'];?></option>
             <?php endwhile;?>
         </select>
-        <button type="submit">Bestellung absenden</button>
+        <button class="btn btn-primary" type="submit">Bestellung absenden</button>
 	</form>
 	
 	<span>Der Preis beträgt: </span>
 	<span id="preis"><?php echo "";?></span>
 	<span> Euro <br></span>
-	
-	<a href="<?php echo $base."/kundenkonto.php";?>">Zur&uuml;ck zum Kundenkonto</a>
+	<br>
+	<a class="btn btn-primary" role="button" href="<?php echo $base."/kundenkonto.php";?>">Zur&uuml;ck zum Kundenkonto</a>
 </div>
 </body>
 

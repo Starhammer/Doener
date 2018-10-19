@@ -81,7 +81,7 @@ while($aufpreis = mysqli_fetch_array($aufpreise)){
 }
 ?>
 <header>
-    <h1>Bestellungen anzeigen</h1>
+    <h1 class="h1 mb-3 font-weight-normal">Bestellungen anzeigen</h1>
 </header>
 <div id="main">
     <table class="table table-striped table-condensed">

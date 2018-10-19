@@ -1,9 +1,13 @@
 <?php
 include_once 'connector.php';
 
-if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false&&strpos($_SERVER['SCRIPT_NAME'], 'register') == false) {
+/*if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false&&strpos($_SERVER['SCRIPT_NAME'], 'register') == false) {
 	checkSession();
-}
+}*/
+if(preg_match('(index|register|agb|datenschutz|impressum)', $_SERVER['SCRIPT_NAME']) === 0) 
+{ 
+	checkSession();
+} 
 
 ini_set('display_errors',0);
 error_reporting(E_NOTICE);
