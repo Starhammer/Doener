@@ -26,6 +26,7 @@ if(isset($username)){
     while ($user = mysqli_fetch_array($users)) {
         if($user['nick']==$username&$user['pw']==$passwort&$user['val']=="J"){
             $kdnr = $user['kdnr'];
+			$rolle = $user['Rolle'];
             $notValid = 0;
 			debug_to_console("Logindata valid");
         }
@@ -46,6 +47,7 @@ if($notValid == 0){
     $token = hash('sha256',bin2hex(openssl_random_pseudo_bytes (64)));
     $_SESSION['token'] = $token;
     $_SESSION['user'] = $kdnr;
+	$_SESSION['rolle'] = $rolle;
     
 	//If Session does not exist, create one
     $result = query("SELECT * FROM sessions WHERE name='".$kdnr."'");
