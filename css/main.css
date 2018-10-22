@@ -7,6 +7,9 @@ header {
 	width:60%;
 	margin:auto;
 }
+.edit{
+    max-width:500px !important;
+}
 
 /*th{
 	min-width:100px;

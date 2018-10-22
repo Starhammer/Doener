@@ -35,7 +35,7 @@ if(isset($kdnr)&&!empty($kdnr)){
 	<h1 class="h1 mb-3 font-weight-normal">Login</h1>
 </header>
 <div class="container">
-	<form action="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$kdnr; ?>" method="Post" class="form-signin">
+	<form action="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$kdnr; ?>" method="Post" class="form-signin edit">
 		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" for="username">Benutzername</label>
 			<div class="col-sm-8">
