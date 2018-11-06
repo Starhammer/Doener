@@ -27,6 +27,7 @@ while($bestellung = mysqli_fetch_array($bestellungen)){
     $tblBestellung[$bestellung['posnr']]['kundenNr']=$name[0].", ".$name[1];
     $name = mysqli_fetch_array(query("SELECT bez FROM produkt WHERE prnr='".$bestellung['prnr']."'"));
     $tblBestellung[$bestellung['posnr']]['produkt']=$name[0];
+$tblBestellung[$bestellung['posnr']]['aufnr']=$bestellung['aufnr'];
     $tblBestellung[$bestellung['posnr']]['datum']=$bestellung['aufdat'];
 }
 
@@ -104,6 +105,7 @@ while($aufpreis = mysqli_fetch_array($aufpreise)){
     			<td><?php echo $bestellung['zutaten']?></td>
 				<td><?php echo number_format ($bestellung['preis'],2)?></td>
 				<td><?php echo date("d.m.Y",strtotime($bestellung['datum']))?></td>
+				<td><a href="deleteOrder.php?aufnr=<?php echo $bestellung['aufnr'] ?>">Löschen</a></td>
 			<tr>
     	<?php endforeach;?>
     </table>
