@@ -24,7 +24,7 @@
 					<a class="nav-item nav-link" href="<?php echo $base."/changePW.php";?>">Passwort &auml;ndern</a>
 					<?php if($_SESSION['rolle']=='admin'): ?>
 						<a class="nav-item nav-link" href="<?php echo $base."/zeigeAlleBestellungen.php";?>">Bestellungen anzeigen</a>
-						<a class="nav-item nav-link" href="<?php echo $base."/editusers.php";?>">User bearbeiten</a>
+						<a class="nav-item nav-link" href="<?php echo $base."/editUsers.php";?>">User bearbeiten</a>
 					<?php endif; ?>
 					<a class="nav-item nav-link navbar-right" href="<?php echo $base."/logout.php";?>">Logout</a>
 				<?php else: ?>					
