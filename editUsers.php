@@ -17,14 +17,19 @@ if(isset($kdnr)&&!empty($kdnr)){
 
 $users = query("SELECT * FROM kunden ORDER BY `kunden`.`kdnr` DESC");
 ?>
+
+<!-- JS fuer das suchen in der Tabelle -->
+ <script  src="js/searchTable.js"></script>
+
 <header>
     <h1 class="h1 mb-3 font-weight-normal">Benutzer bearbeiten</h1>
 </header>
 <div id="main">
-	<table class="table table-striped table-condensed">
+	<table class="table table-striped table-condensed" id="User_table">
+	<input type="text" id="table_input" placeholder="Suche..." class="form-control input_table" onkeyup="searchTable()"></input>
 		<thead>
 			<tr>
-				<th>Kd-Nr.</th>
+				<th>KD.-Nr.</th>
 				<th>Name</th>
 				<th>Vorname</th>
 				<th>vald.</th>
@@ -37,14 +42,14 @@ $users = query("SELECT * FROM kunden ORDER BY `kunden`.`kdnr` DESC");
 		</thead>		
 		<?php while($row = mysqli_fetch_array($users)):?>
 		<tr>
-			<td><?php echo ltrim($row['kdnr'],'0')?></td>
-			<td><?php echo $row['name']?></td>
-			<td><?php echo $row['vorname']?></td>
-			<td><?php echo $row['val']?></td>
-			<td><?php echo $row['kurs']?></td>
-			<td><?php echo $row['nick']?></td>
-			<td><?php echo $row['email']?></td>
-			<td><?php echo $row['Rolle']?></td>
+			<td class="table_KD"><?php echo ltrim($row['kdnr'],'0')?></td>
+			<td class="table_name"><?php echo $row['name']?></td>
+			<td class="table_vorname"><?php echo $row['vorname']?></td>
+			<td class="table_val"><?php echo $row['val']?></td>
+			<td class="table_kurs"><?php echo $row['kurs']?></td>
+			<td class="table_nick"><?php echo $row['nick']?></td>
+			<td class="table_email"><?php echo $row['email']?></td>
+			<td class="table_rolle"><?php echo $row['Rolle']?></td>
 			<td>
 				<a class="btn btn-sm btn-outline-danger btn-felx" href="editUser.php?kdnr=<?php echo $row['kdnr'];?>">edit</a> 
 				<?php if($row['val'] != "J"): ?>
@@ -58,6 +63,7 @@ $users = query("SELECT * FROM kunden ORDER BY `kunden`.`kdnr` DESC");
 		<a class="btn btn-primary btn-flex" href="kundenkonto.php">Zurück</a>
 	</div>
  </div>
+
 
 <?php
 include_once "footer.php";
