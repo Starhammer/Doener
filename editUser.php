@@ -14,25 +14,34 @@ $kurs = $_POST['kurs'];
 $rolle = $_POST['rolle'];
 $val = $_POST['val'];
 $passwort = hash("sha1",$_POST['passwort']);
+$delete = $_POST['delete'];
 
 $kdnr = $_GET['kdnr'];
 if(isset($kdnr)&&!empty($kdnr)){
-	$kdnr = mysqli_real_escape_string($link,$kdnr);
-	if(	isset($username)&&!empty($username)&&
-		isset($email)&&!empty($email)&&
-		isset($vorname)&&!empty($vorname)&&
-		isset($nachname)&&!empty($nachname)&&
-		isset($kurs)&&!empty($kurs)&&
-		isset($rolle)&&!empty($rolle))
+	if(isset($delete)&&!empty($delete)&&$delete == "true")
 	{
-		if(isset($passwort))
+		query("DELETE FROM kunden WHERE kdnr='".$kdnr."' LIMIT 1");
+		?><meta http-equiv="refresh" content="0; URL=./editUsers.php"><?php
+	}
+	else 
+	{
+		$kdnr = mysqli_real_escape_string($link,$kdnr);
+		if(	isset($username)&&!empty($username)&&
+			isset($email)&&!empty($email)&&
+			isset($vorname)&&!empty($vorname)&&
+			isset($nachname)&&!empty($nachname)&&
+			isset($kurs)&&!empty($kurs)&&
+			isset($rolle)&&!empty($rolle))
 		{
-			query("UPDATE kunden SET val='".$val."',name='".$nachname."',vorname='".$vorname."',kurs='".$kurs."',nick='".$username."',email='".$email."',Rolle='".$rolle."',pw='".$passwort."' WHERE kdnr='".$kdnr."'");
-		}
-		else {
-			query("UPDATE kunden SET val='".$val."',name='".$nachname."',vorname='".$vorname."',kurs='".$kurs."',nick='".$username."',email='".$email."',Rolle='".$rolle."' WHERE kdnr='".$kdnr."'");
-		}
+			if(isset($passwort))
+			{
+				query("UPDATE kunden SET val='".$val."',name='".$nachname."',vorname='".$vorname."',kurs='".$kurs."',nick='".$username."',email='".$email."',Rolle='".$rolle."',pw='".$passwort."' WHERE kdnr='".$kdnr."'");
+			}
+			else {
+				query("UPDATE kunden SET val='".$val."',name='".$nachname."',vorname='".$vorname."',kurs='".$kurs."',nick='".$username."',email='".$email."',Rolle='".$rolle."' WHERE kdnr='".$kdnr."'");
+			}
 		
+		}
 	}
 	$user = mysqli_fetch_array(query("SELECT * From kunden WHERE kdnr='".$kdnr."'"));
 	
@@ -44,7 +53,8 @@ if(isset($kdnr)&&!empty($kdnr)){
 	<h1 class="h1 mb-3 font-weight-normal">Login</h1>
 </header>
 <div class="container">
-	<form action="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$kdnr; ?>" method="Post" class="form-signin edit">
+	<form action="<?php echo $_SERVER['PHP_SELF']."?kdnr=".$kdnr; ?>" method="Post" class="form-signin edit" id="form_editUser">
+		<input type="hidden" name="delete" id="delete" value="<?php echo $delete ?>">
 		<div class="form-group row">
 			<label class="col-sm-3 col-form-label" for="username">Benutzername</label>
 			<div class="col-sm-8">
@@ -98,9 +108,16 @@ if(isset($kdnr)&&!empty($kdnr)){
 		</div>
 		<button class="btn btn-primary btn-flex" type="submit">speichern</button>
 		<a class="btn btn-primary btn-flex" href="editUsers.php">&Uuml;bersicht</a>
+		<button class="btn btn-danger btn-flex" onclick="deleteUser()">L&ouml;schen</button>
 	</form>
 </div>
-
+<script>
+function deleteUser(){
+	document.getElementById("delete").value = "true";
+	document.getElementById("form_editUser").submit();
+	return true;
+}
+</script>
 <?php
 include_once "footer.php";
 ?>
