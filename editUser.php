@@ -13,6 +13,7 @@ $nachname = $_POST['nachname'];
 $kurs = $_POST['kurs'];
 $rolle = $_POST['rolle'];
 $val = $_POST['val'];
+$passwort = hash("sha1",$_POST['passwort']);
 
 $kdnr = $_GET['kdnr'];
 if(isset($kdnr)&&!empty($kdnr)){
@@ -22,8 +23,16 @@ if(isset($kdnr)&&!empty($kdnr)){
 		isset($vorname)&&!empty($vorname)&&
 		isset($nachname)&&!empty($nachname)&&
 		isset($kurs)&&!empty($kurs)&&
-		isset($rolle)&&!empty($rolle)){
-		query("UPDATE kunden SET val='".$val."',name='".$nachname."',vorname='".$vorname."',kurs='".$kurs."',nick='".$username."',email='".$email."',Rolle='".$rolle."' WHERE kdnr='".$kdnr."'");
+		isset($rolle)&&!empty($rolle))
+	{
+		if(isset($passwort))
+		{
+			query("UPDATE kunden SET val='".$val."',name='".$nachname."',vorname='".$vorname."',kurs='".$kurs."',nick='".$username."',email='".$email."',Rolle='".$rolle."',pw='".$passwort."' WHERE kdnr='".$kdnr."'");
+		}
+		else {
+			query("UPDATE kunden SET val='".$val."',name='".$nachname."',vorname='".$vorname."',kurs='".$kurs."',nick='".$username."',email='".$email."',Rolle='".$rolle."' WHERE kdnr='".$kdnr."'");
+		}
+		
 	}
 	$user = mysqli_fetch_array(query("SELECT * From kunden WHERE kdnr='".$kdnr."'"));
 	
@@ -81,6 +90,12 @@ if(isset($kdnr)&&!empty($kdnr)){
 				</select>
 			</div>
 		</div>		
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" for="passwort">neues Kennwort</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="passwort" name="passwort" type="passwort" placeholder="">
+			</div>
+		</div>
 		<button class="btn btn-primary btn-flex" type="submit">speichern</button>
 		<a class="btn btn-primary btn-flex" href="editUsers.php">&Uuml;bersicht</a>
 	</form>
