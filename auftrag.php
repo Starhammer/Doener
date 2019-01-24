@@ -3,7 +3,7 @@ session_start();
 require_once 'head.php'; 
 
 $auftrag_produkt = $_POST['product'];
-$auftrag_ingredients = $_POST['ingredients'];
+$auftrag_ingredients = $_POST['Ingredients'];
 
 $orderPlaced = false;
 if(isset($auftrag_produkt)){
@@ -103,8 +103,8 @@ $jsingredients = array();
 					$ingredients = query("Select * FROM zutaten WHERE kategorie = 0");
 					while($ingredient = mysqli_fetch_array($ingredients)):
 						  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
-            			<div class="form-check">
-            				<input class="form-check-input" type="checkbox" name="<?php echo $ingredient['bez'];?>" value="<?php echo $ingredient['zunr'];?>"></input>
+            			<div class="form-check ingredients">
+            				<input class="form-check-input" type="checkbox" name="Ingredients[]" value="<?php echo $ingredient['zunr'];?>"></input>
 							<label class="form-check-label" for="<?php echo $ingredient['bez'];?>"><?php echo $ingredient['bez'];?></label>
 						</div>
 				<?php endwhile;?>
@@ -114,8 +114,8 @@ $jsingredients = array();
 					$ingredients = query("Select * FROM zutaten WHERE kategorie = 1");
 					while($ingredient = mysqli_fetch_array($ingredients)):
 						  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
-            			<div class="form-check">
-            				<input class="form-check-input" type="checkbox" name="<?php echo $ingredient['bez'];?>" value="<?php echo $ingredient['zunr'];?>"></input>
+            			<div class="form-check ingredients">
+            				<input class="form-check-input" type="checkbox" name="Ingredients[]" value="<?php echo $ingredient['zunr'];?>"></input>
 							<label class="form-check-label" for="<?php echo $ingredient['bez'];?>"><?php echo $ingredient['bez'];?></label>
 						</div>
 				<?php endwhile;?>
@@ -125,8 +125,8 @@ $jsingredients = array();
 					$ingredients = query("Select * FROM zutaten WHERE kategorie = 2");
 					while($ingredient = mysqli_fetch_array($ingredients)):
 						  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
-            			<div class="form-check">
-            				<input class="form-check-input" type="checkbox" name="<?php echo $ingredient['bez'];?>" value="<?php echo $ingredient['zunr'];?>"></input>
+            			<div class="form-check ingredients">
+            				<input class="form-check-input" type="checkbox" name="Ingredients[]" value="<?php echo $ingredient['zunr'];?>"></input>
 							<label class="form-check-label" for="<?php echo $ingredient['bez'];?>"><?php echo $ingredient['bez'];?></label>
 						</div>
 				<?php endwhile;?>
@@ -149,36 +149,32 @@ $jsingredients = array();
 <?php endif;?>
 
 <?php require_once 'footer.php';?>
+
 <script text="text/javascript">
-	/*$('select').select2({
-	  allowClear: true
-	});*/
 
 //On Change from select preis neu Bewerten
 var produkte = <?php echo json_encode($produkte); ?>;
 var ingredients = <?php echo json_encode($jsingredients); ?>;
 
+function updatePrice(){
+	var preis = parseFloat( produkte[$('#product').children(":selected").val()] );
+	$.each($('.ingredients').children("input:checked"), function(){	
+		preis = preis + parseFloat( ingredients[$(this).val()] );
+	});
+	$('#preis').text(preis.toFixed(2));
+}
+
+
+
 $( document ).ready(function() {
 	$('select').trigger("change");
 });
 
-
-$('select').change(function(){
-	var preis = produkte[$('#product').children(":selected").val()];
-
-	var selectedIngredients = [];
-	$.each($('#ingredients').children(":selected"), function(){
-	var selectedId = $(this).val();
-		$.each(ingredients,function(index,value){
-			if(index==selectedId)preis= +preis + +value;
-		});
-// 		selectedIngredients.push($(this).val());
-	});
-	
-	
-// 	var productpreis = $('#product').children(":selected").attr("id");
-// 	var ingredientspreis = $('#ingredients').children(":selected").attr("id");
-// 	alert(ingredientspreis);
-	$('#preis').text(preis);
+$(':checkbox').change(function(){
+	updatePrice();
 });
+$('select').change(function(){
+	updatePrice();
+});
+
 </script>
