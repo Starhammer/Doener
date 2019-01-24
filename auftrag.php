@@ -53,7 +53,7 @@ if(isset($auftrag_produkt)){
 $produkte =array();
 $jsingredients = array();
 ?>
-<div style="padding-left: 1%">
+<!--div style="padding-left: 1%">
 	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
     	<select id="product" name="product" style="width:150px">
             <?php // Select all from Product
@@ -80,16 +80,79 @@ $jsingredients = array();
 	<span> Euro <br></span>
 	<br>
 	<a class="btn btn-primary" role="button" href="<?php echo $base."/kundenkonto.php";?>">Zur&uuml;ck zum Kundenkonto</a>
-</div>
+</div-->
+
+
+<!-- Test -->
+<div class="justify-content-md-center">
+	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+		<div class="row justify-content-center pt-4 pb-4">
+			<div class="col-sm-1">
+    			<select id="product" name="product" class="form-control">
+					<?php // Select all from Product
+					$products = query("Select * FROM produkt");
+					while($product = mysqli_fetch_array($products)):?>
+            				<?php $produkte[$product['prnr']] = $product['VK']?>
+            			<option  value="<?php echo $product['prnr'];?>"><?php echo $product['bez'];?></option>
+					<?php endwhile;?>
+				</select>
+			</div>
+			<?php echo "mit";?>
+			<div id="meat_ingredients" class="col-md-1 form-check text-left border-right border-primary">
+				<?php // Select meat from zutaten
+					$ingredients = query("Select * FROM zutaten WHERE kategorie = 0");
+					while($ingredient = mysqli_fetch_array($ingredients)):
+						  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
+            			<div class="form-check">
+            				<input class="form-check-input" type="checkbox" name="<?php echo $ingredient['bez'];?>" value="<?php echo $ingredient['zunr'];?>"></input>
+							<label class="form-check-label" for="<?php echo $ingredient['bez'];?>"><?php echo $ingredient['bez'];?></label>
+						</div>
+				<?php endwhile;?>
+			</div>
+			<div id="vegetable_ingredients" class="col-md-1 form-check text-left border-left border-right border-primary">
+				<?php // Select vegetable from zutaten
+					$ingredients = query("Select * FROM zutaten WHERE kategorie = 1");
+					while($ingredient = mysqli_fetch_array($ingredients)):
+						  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
+            			<div class="form-check">
+            				<input class="form-check-input" type="checkbox" name="<?php echo $ingredient['bez'];?>" value="<?php echo $ingredient['zunr'];?>"></input>
+							<label class="form-check-label" for="<?php echo $ingredient['bez'];?>"><?php echo $ingredient['bez'];?></label>
+						</div>
+				<?php endwhile;?>
+			</div>
+			<div id="extra_ingredients" class="col-md-1 form-check text-left border-left border-primary">
+				<?php // Select extras from zutaten
+					$ingredients = query("Select * FROM zutaten WHERE kategorie = 2");
+					while($ingredient = mysqli_fetch_array($ingredients)):
+						  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
+            			<div class="form-check">
+            				<input class="form-check-input" type="checkbox" name="<?php echo $ingredient['bez'];?>" value="<?php echo $ingredient['zunr'];?>"></input>
+							<label class="form-check-label" for="<?php echo $ingredient['bez'];?>"><?php echo $ingredient['bez'];?></label>
+						</div>
+				<?php endwhile;?>
+			</div>
+		</div>
+
+        <button class="btn btn-primary" type="submit">Bestellung absenden</button>
+	</form>
+	
+	<span>Der Preis beträgt: </span>
+	<span id="preis"><?php echo "";?></span>
+	<span> Euro <br></span>
+	<br>
+	<a class="btn btn-primary" role="button" href="<?php echo $base."/kundenkonto.php";?>">Zur&uuml;ck zum Kundenkonto</a>
+
+
+
 </body>
 
 <?php endif;?>
 
 <?php require_once 'footer.php';?>
 <script text="text/javascript">
-$('select').select2({
+	/*$('select').select2({
 	  allowClear: true
-	});
+	});*/
 
 //On Change from select preis neu Bewerten
 var produkte = <?php echo json_encode($produkte); ?>;
