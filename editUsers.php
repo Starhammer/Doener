@@ -41,7 +41,7 @@ $users = query("SELECT * FROM kunden ORDER BY `kunden`.`kdnr` DESC");
 			</tr>
 		</thead>		
 		<?php while($row = mysqli_fetch_array($users)):?>
-		<tr>
+		<tr class="tr-content">
 			<td class="table_KD"><?php echo ltrim($row['kdnr'],'0')?></td>
 			<td class="table_name"><?php echo $row['name']?></td>
 			<td class="table_vorname"><?php echo $row['vorname']?></td>

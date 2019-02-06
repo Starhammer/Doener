@@ -4,8 +4,8 @@ function searchTable() {
 	var table, tr, input, data;
 
 	table = document.getElementById("User_table");
-    tr = table.getElementsByTagName("tr");
-    input = document.getElementById("table_input").value;
+    tr = table.getElementsByClassName("tr-content");
+    input = document.getElementById("table_input").value.toLowerCase();
     data = [];
     
     for (i = 0; i < tr.length; i++)
