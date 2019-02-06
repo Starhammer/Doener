@@ -41,7 +41,9 @@ from (	Select  a.kdnr, a.aufnr, a.aufdat, b.posnr, b.prnr
 		WHERE a.aufnr = b.aufnr
         AND aufdat > '".date('Y-m-d',time()-60*60*24*2)."') c,
 		zutbest d
+		LEFT JOIN zutaten e on d.zunr = e.zunr
 Where c.posnr = d.posnr
+ORDER BY e.kategorie
 "); //TODO DATE
 while($zutat = mysqli_fetch_array($zutaten)){
     $name = mysqli_fetch_array(query("SELECT bez FROM zutaten WHERE zunr='".$zutat['zutatennummer']."'"));
@@ -90,8 +92,8 @@ while($aufpreis = mysqli_fetch_array($aufpreise)){
     		<tr>
 				<th>Nr</th>
 				<th>Name</th>
-				<th>produkt</th>
-				<th>zutaten</th>
+				<th>Produkt</th>
+				<th>Zutaten</th>
 				<th>Preis</th>
 				<th>Datum</th>
 			</tr>
