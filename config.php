@@ -4,7 +4,7 @@ include_once 'connector.php';
 /*if (strpos($_SERVER['SCRIPT_NAME'], 'index') == false&&strpos($_SERVER['SCRIPT_NAME'], 'register') == false) {
 	checkSession();
 }*/
-if(preg_match('(index|register|agb|datenschutz|impressum)', $_SERVER['SCRIPT_NAME']) === 0) 
+if(preg_match('(index|register|agb|datenschutz|impressum|requestPW)', $_SERVER['SCRIPT_NAME']) === 0) 
 { 
 	checkSession();
 } 

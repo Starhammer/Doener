@@ -82,6 +82,7 @@ if($notValid == 0){
 		<input class="form-control" id="passwort" name="passwort" type="password" placeholder="Passwort" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
 	</form>
+	<a href="./requestPW.php" class="btn btn-primary" type="button">Passwort zur&uuml;cksetzen</a>
 
 <?php 
 //import std Footer
