@@ -134,7 +134,7 @@ function randomPassword() {
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="Post" class="form-signin">
 		<h1 class="h1 mb-3 font-weight-normal">Passwort Zur&uuml;cksetzen</h1>
 		<input class="form-control" type="text" id="userMail" name="userMail" required placeholder="Bitte geben Sie ihre Mailadresse ein"></input>
-		<button type="submit" class="btn btn-primary">anfordern</button>
+		<button type="submit" class="btn btn-primary">Neues Passwort anfordern</button>
 	</form>
 </div>
 
