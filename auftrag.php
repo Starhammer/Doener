@@ -86,7 +86,7 @@ $jsingredients = array();
 <!-- Test -->
 <div class="justify-content-md-center">
 	<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-		<div class="row justify-content-center pt-4 pb-4">
+		<div class="row justify-content-center pt-4 pb-4 mr-0 ml-0">
 			<div class="col-sm-1">
     			<select id="product" name="product" class="form-control">
 					<?php // Select all from Product
@@ -99,15 +99,17 @@ $jsingredients = array();
 			</div>
 			<?php echo "mit";?>
 			<div id="meat_ingredients" class="col-md-1 form-check text-left border-right border-primary">
+				<fiealdset>
 				<?php // Select meat from zutaten
 					$ingredients = query("Select * FROM zutaten WHERE kategorie = 0");
 					while($ingredient = mysqli_fetch_array($ingredients)):
 						  $jsingredients[$ingredient['zunr']] = $ingredient['aup']?>
             			<div class="form-check ingredients">
-            				<input class="form-check-input" type="checkbox" name="Ingredients[]" value="<?php echo $ingredient['zunr'];?>"></input>
+            				<input class="form-check-input" required type="radio" name="Ingredients[]" value="<?php echo $ingredient['zunr'];?>"></input>
 							<label class="form-check-label" for="<?php echo $ingredient['bez'];?>"><?php echo $ingredient['bez'];?></label>
 						</div>
 				<?php endwhile;?>
+				</fieldset>
 			</div>
 			<div id="vegetable_ingredients" class="col-md-1 form-check text-left border-left border-right border-primary">
 				<?php // Select vegetable from zutaten
