@@ -162,6 +162,7 @@ function updatePrice(){
 	var preis = parseFloat( produkte[$('#product').children(":selected").val()] );
 	$.each($('.ingredients').children("input:checked"), function(){	
 		preis = preis + parseFloat( ingredients[$(this).val()] );
+		console.log(parseFloat( ingredients[$(this).val()] ));
 	});
 	$('#preis').text(preis.toFixed(2));
 }
@@ -176,6 +177,9 @@ $(':checkbox').change(function(){
 	updatePrice();
 });
 $('select').change(function(){
+	updatePrice();
+});
+$(':radio').change(function(){
 	updatePrice();
 });
 
